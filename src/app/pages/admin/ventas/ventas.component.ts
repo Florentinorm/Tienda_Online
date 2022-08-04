@@ -25,4 +25,8 @@ export class VentasComponent implements OnInit {
     this.router.navigate(["/detalle-venta", id])
   }
 
+  navegarAFormulario() {
+    this.router.navigateByUrl("/productos");
+  }
+
 }

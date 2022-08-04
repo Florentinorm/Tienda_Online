@@ -69,6 +69,4 @@ export class HeaderComponent implements OnInit, OnDestroy {
     return total;
   }
 
-
-
 }

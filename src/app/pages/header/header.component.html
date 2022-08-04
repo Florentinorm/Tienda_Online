@@ -1,4 +1,4 @@
-<mat-toolbar *ngIf="isLogged" [class.mat-elevation-z2]="true" color="primary">
+<mat-toolbar class="color" *ngIf="isLogged" [class.mat-elevation-z2]="true" color="primary">
     <button mat-icon-button (click)="onToggleSidenav()">
       <mat-icon>menu</mat-icon>
     </button>
@@ -18,5 +18,5 @@
               Terminar compra</a>
           </mat-menu>
         </div>
-    <button mat-button (click)="onLogout()">Cerrar sesión</button>
+    <button mat-button (click)="onLogout()"><mat-icon>logout</mat-icon> Cerrar sesión</button>
  </mat-toolbar>  

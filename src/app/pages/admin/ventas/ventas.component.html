@@ -1,5 +1,5 @@
 <h1>Ventas</h1>
-
+<button (click)="navegarAFormulario()" mat-raised-button style="background-color: rgb(201, 151, 250);" mat-raised-button><mat-icon>assignment_return</mat-icon> Regresar</button>
 <table class="mat-elevation-z13" *ngIf="ventas.length>0" mat-table [dataSource]="ventas">
   <ng-container matColumnDef="cliente">
     <mat-header-cell *matHeaderCellDef>Cliente</mat-header-cell>

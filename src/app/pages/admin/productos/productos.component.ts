@@ -35,4 +35,8 @@ export class ProductosComponent implements OnInit {
     this.router.navigateByUrl("/productos/agregar");
   }
 
+  navegarAVentas() {
+    this.router.navigateByUrl("/ventas");
+  }
+
 }

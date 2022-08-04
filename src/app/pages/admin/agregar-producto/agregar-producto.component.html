@@ -1,37 +1,38 @@
 <mat-card>
   <h1>Agregar nuevo producto</h1>
-  <form  [formGroup]="signupForm" (ngSubmit)="guardar()" novalidate>
+  <form [formGroup]="signupForm" (ngSubmit)="guardar()" novalidate>
 
     <p>
       <mat-card appearance="fill">
-        <input matInput formControlName="nomPro" type="text" placeholder="Nombre" >
+        <input matInput formControlName="nomPro" type="text" placeholder="Nombre">
         <mat-error *ngIf="isValidField('nomPro')">
           {{ getErrorMessage('nomPro') }}
         </mat-error>
       </mat-card>
     </p>
     <p>
-    <mat-card>
-      <textarea rows="10" matInput formControlName="descripcion" placeholder="Descripción"></textarea>
-      <mat-error *ngIf="isValidField('descripcion')">
-        {{ getErrorMessage('descripcion') }}
-      </mat-error>
-    </mat-card>
-  </p>
-  <p>
-    <mat-form-field>
-      <input matInput formControlName="precio" type="number" placeholder="Precio">
-      <mat-error *ngIf="isValidField('precio')">
-        {{ getErrorMessage('precio') }}
-      </mat-error>
-    </mat-form-field>
-  </p>
-  <label for="fotos">Fotos</label>
-  <br>
-  <input accept="image/png,image/jpeg" #foto required id="fotos" multiple type="file">
-  <p style="float: right;">
-    <button texto="Guardar" mat-raised-button [disabled]="!signupForm.valid" color="primary" type="submit">Agregar</button>
-    <a routerLink="/productos" mat-raised-button color="Warn" style="margin-left: 10px">Volver</a>
-  </p>
-</form>
+      <mat-card>
+        <textarea rows="10" matInput formControlName="descripcion" placeholder="Descripción"></textarea>
+        <mat-error *ngIf="isValidField('descripcion')">
+          {{ getErrorMessage('descripcion') }}
+        </mat-error>
+      </mat-card>
+    </p>
+    <p>
+      <mat-form-field>
+        <input matInput formControlName="precio" type="number" placeholder="Precio">
+        <mat-error *ngIf="isValidField('precio')">
+          {{ getErrorMessage('precio') }}
+        </mat-error>
+      </mat-form-field>
+    </p>
+    <label for="fotos">Fotos</label>
+    <br>
+    <input accept="image/png,image/jpeg" #foto required id="fotos" multiple type="file">
+    <p style="float: right;">
+      <button texto="Guardar" mat-raised-button [disabled]="!signupForm.valid" color="primary"
+        type="submit">Agregar</button>
+      <a routerLink="/productos" mat-raised-button color="Warn" style="margin-left: 10px">Volver</a>
+    </p>
+  </form>
 </mat-card>

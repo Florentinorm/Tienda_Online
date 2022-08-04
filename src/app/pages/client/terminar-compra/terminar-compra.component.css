@@ -34,3 +34,9 @@ img{
 .example-full-width {
   width: 90%;
 }
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+}

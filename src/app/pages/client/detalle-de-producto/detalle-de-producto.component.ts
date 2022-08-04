@@ -22,6 +22,7 @@ export class DetalleDeProductoComponent implements OnInit {
   public fotoSeleccionada: string;
   public indiceSeleccionado = 0;
   public yaExiste: boolean;
+  router: any;
 
   constructor(private carritoService: CarritoService, private productosService: ProductosService, private activatedRoute: ActivatedRoute, private dataSharingService: DataSharingService) {
 
@@ -66,5 +67,7 @@ export class DetalleDeProductoComponent implements OnInit {
     }
     this.refrescarEstado();
   }
+
+
 
 }

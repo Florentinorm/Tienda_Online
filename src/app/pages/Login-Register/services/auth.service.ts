@@ -77,11 +77,11 @@ export class AuthService {
             if (user.idRol === 2) {
               this.isUserAdmin$.next(true);
               this.isUserLoggedIn$.next(true);
-              this.router.navigate(['/home']);
+              this.router.navigate(['/productos']);
             } else if (user.idRol === 1) {
               this.isUserLoggedIn$.next(true);
               console.log(this.isUserLoggedIn$)
-              this.router.navigate(['/home']);
+              this.router.navigate(['/tienda']);
             } else {
               Swal.fire({
                 title: 'Ocurrió un error',
