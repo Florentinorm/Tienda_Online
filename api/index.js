@@ -95,12 +95,12 @@ app.post("/compra", async (req, res) => {
   try {
     const carrito = req.session.carrito || [];
     carrito.forEach(p => total += p.precio);
-    //const idCliente = await clienteModel.insertar(direccion, idUsuario);
     const idVenta = await User.saveVenta(idUsuario, direccion, total);
+    const id = await User.findIdVenta()
     // usamos for en lugar de foreach por el await
     for (let m = 0; m < carrito.length; m++) {
       const productoActual = carrito[m];
-      await productoVendidoModel.insertar(idVenta, productoActual.id);
+      await User.InsertProductoVendido(id[0][0].idVenta, productoActual.id);
     }
     // Limpiar carrito...
     req.session.carrito = [];
