@@ -113,8 +113,6 @@ app.post("/compra", async (req, res) => {
 });
 
 
-
-
 app.get("/carrito", (req, res) => {
   res.json(req.session.carrito || []);
 })
