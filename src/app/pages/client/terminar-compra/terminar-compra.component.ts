@@ -39,7 +39,8 @@ export class TerminarCompraComponent implements OnInit {
     await this.obtenerProductos();
   }
   
-
+ 
+  
   createFormGroup(): FormGroup {
     return new FormGroup({
       nomPro: new FormControl("", [Validators.required, Validators.minLength(3), Validators.maxLength(20), this.noWhitespaceValidator]),

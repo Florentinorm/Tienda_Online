@@ -30,8 +30,9 @@ export class CarritoService {
   async obtenerProductos() {
     return await this.http.get("/carrito");
   }
-
+ 
   async terminarCompra(datosCliente: any) {
     return await this.http.post("/compra", datosCliente);
   }
 }
+
