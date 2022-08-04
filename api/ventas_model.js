@@ -12,7 +12,7 @@ module.exports = {
   },
   obtenerPorId(id) {
     return new Promise((resolve, reject) => {
-      conexion.query(`select ventas.total, usuarios.nombre, usuarios.direccion FROM ventas inner join usuarios on ventas.id_usuario = usuarios.id_usuario WHERE ventas.id = ?`,
+      conexion.query(`select ventas.total, usuarios.nombre FROM ventas inner join usuarios on ventas.id_usuario = usuarios.id_usuario WHERE ventas.id = ?`,
         [id],
         (err, resultados) => {
           if (err) reject(err);
@@ -22,7 +22,7 @@ module.exports = {
   },
   obtener() {
     return new Promise((resolve, reject) => {
-      conexion.query(`select ventas.id, ventas.total, usuarios.nombre, usuarios.direccion FROM ventas inner join usuarios on ventas.id_usuario = usuarios.id_usuario;`,
+      conexion.query(`select ventas.id, ventas.direccion, ventas.total, usuarios.nombre FROM ventas inner join usuarios on ventas.id_usuario = usuarios.id_usuario;`,
         (err, resultados) => {
           if (err) reject(err);
           else resolve(resultados);
