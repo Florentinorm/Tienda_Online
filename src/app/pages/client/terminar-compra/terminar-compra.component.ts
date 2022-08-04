@@ -42,14 +42,11 @@ export class TerminarCompraComponent implements OnInit {
     }
 
     let id = this.authSvc.idUsuario.getValue()
-    console.log(id)
     const datos = {
       cliente: this.clienteModel,
       idUsuario: id
     }
-    const respuestaCompra = await this.carritoService.terminarCompra(datos);
-    console.log({respuestaCompra})
-
+    this.carritoService.terminarCompra(datos)
 
     this.compraTerminada=true;
     stepper.next();
