@@ -31,7 +31,7 @@ export class CarritoService {
     return await this.http.get("/carrito");
   }
 
-  async terminarCompra(datosCliente) {
+  async terminarCompra(datosCliente: any) {
     return await this.http.post("/compra", datosCliente);
   }
 }

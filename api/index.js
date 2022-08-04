@@ -1,5 +1,6 @@
 const authRoutes = require('./routes/login.route');
 var bodyParser = require('body-parser');
+const User = require("./models/user");
 
 
 
@@ -86,23 +87,34 @@ app.get("/ventas", async (req, res) => {
   res.json(ventas);
 });
 app.post("/compra", async (req, res) => {
-  const {nombre, direccion} = req.body;
   let total = 0;
+  const nombre = req.body.cliente.nombre;
+  const direccion = req.body.cliente.direccion;
+  const idUsuario = req.body.idUsuario
 
-  const carrito = req.session.carrito || [];
-  carrito.forEach(p => total += p.precio);
-  const idCliente = await clienteModel.insertar(nombre, direccion);
-  const idVenta = await ventaModel.insertar(idCliente, total);
-  // usamos for en lugar de foreach por el await
-  for (let m = 0; m < carrito.length; m++) {
-    const productoActual = carrito[m];
-    await productoVendidoModel.insertar(idVenta, productoActual.id);
+  try {
+    const carrito = req.session.carrito || [];
+    carrito.forEach(p => total += p.precio);
+    //const idCliente = await clienteModel.insertar(direccion, idUsuario);
+    const idVenta = await User.saveVenta(idUsuario, direccion, total);
+    // usamos for en lugar de foreach por el await
+    for (let m = 0; m < carrito.length; m++) {
+      const productoActual = carrito[m];
+      await productoVendidoModel.insertar(idVenta, productoActual.id);
+    }
+    // Limpiar carrito...
+    req.session.carrito = [];
+    // ¡listo!
+    return res.status(200).json(true, direccion, nombre);
+  } catch (error) {
+    return res.status(500).json({ message: 'Ocurrio un error vuelve a intentarlo' });
   }
-  // Limpiar carrito...
-  req.session.carrito = [];
-  // ¡listo!
-  res.json(true);
+
 });
+
+
+
+
 app.get("/carrito", (req, res) => {
   res.json(req.session.carrito || []);
 })

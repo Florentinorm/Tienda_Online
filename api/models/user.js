@@ -41,6 +41,12 @@ module.exports = class User {
     );
   }
 
+  static saveVenta(id_usuario, direccion, total) {
+    return db.execute(`insert into ventas (id_usuario, direccion, total) values (?, ?, ?)`,
+        [id_usuario, direccion, total],
+    ); 
+  }
+
     //actualiza el nuevo usuario con el token
     static update(idUser, User) {
       //retirna una sentencia sql

@@ -3,6 +3,7 @@ import {CarritoService} from "../../../carrito.service";
 import {DataSharingService} from "../../../data-sharing.service";
 import {MatTableDataSource} from '@angular/material/table';
 import {Cliente} from "../../../cliente";
+import { AuthService } from '../../Login-Register/services/auth.service';
 
 export interface PeriodicElement {
   producto: string;
@@ -23,7 +24,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class TerminarCompraComponent implements OnInit {
 
-  constructor(private carritoService: CarritoService, private dataSharingService: DataSharingService) {
+  constructor(private carritoService: CarritoService, private dataSharingService: DataSharingService, private authSvc: AuthService) {
   }
 
   public compraTerminada = false;
@@ -39,7 +40,14 @@ export class TerminarCompraComponent implements OnInit {
     if (!this.clienteModel.nombre) {
       return alert("Falta escribir el nombre del cliente");
     }
-    const respuestaCompra = await this.carritoService.terminarCompra(this.clienteModel);
+
+    let id = this.authSvc.idUsuario.getValue()
+    console.log(id)
+    const datos = {
+      cliente: this.clienteModel,
+      idUsuario: id
+    }
+    const respuestaCompra = await this.carritoService.terminarCompra(datos);
     console.log({respuestaCompra})
 
 

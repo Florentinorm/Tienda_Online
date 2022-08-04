@@ -9,6 +9,10 @@
 
 # dependencies
 /node_modules
+api/node_modules/
+api/.env
+api/config/config-db.json
+api/database/db.js
 
 # profiling files
 chrome-profiler-events*.json

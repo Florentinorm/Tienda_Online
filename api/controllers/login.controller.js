@@ -154,7 +154,7 @@ exports.login = async (req, res, next) => {
         message: "Autentificación correcta",
         token: token,
         idRol: idUsuario,
-        userId: storedUser.id,
+        userId: storedUser.id_usuario,
         code: 0,
       });
   } catch (error) {

@@ -13,6 +13,7 @@ export interface User {
     token: string;
     code: number;
     idRol: number;
+    userId: string;
   }
   
   

@@ -26,6 +26,12 @@ export class AuthService {
     return this.token.asObservable(); //se quedará escuchando el token para verificar cuando hace cambios y se actualice automáticamente
   }
 
+  idUsuario = new BehaviorSubject<string>(''); //recibirá tipo string
+  get idUsuario$(): Observable<string> {
+    //devolverá un observavble de tipo string
+    return this.idUsuario.asObservable(); //se quedará escuchando el token para verificar cuando hace cambios y se actualice automáticamente
+  }
+
 
   httpOptions: { headers: HttpHeaders } = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -74,6 +80,7 @@ export class AuthService {
             //this.user.next(user.idUsuario);
             this.token.next(user.token); //le decimos que continue, le pasamos el token del user
             this.SaveLocalStorage(user.token); //método para guardar el token
+            this.idUsuario.next(user.userId);
             if (user.idRol === 2) {
               this.isUserAdmin$.next(true);
               this.isUserLoggedIn$.next(true);
@@ -99,6 +106,7 @@ export class AuthService {
     localStorage.removeItem('token'); //removemos el token
     this.token.next(''); // seteamos la variable del observable a vacio
     this.isUserLoggedIn$.next(false);
+    this.idUsuario.next('');
     this.isUserAdmin$.next(false);
     this.utilsSvc.openSidebar(false);
     this.router.navigate(['login']); //redirigimos al login

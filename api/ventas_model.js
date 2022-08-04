@@ -29,16 +29,18 @@ module.exports = {
         });
     });
   },
-  insertar(idCliente, total) {
+  insertar( idUsuario, direccion, total) {
+    console.log('entro', direccion, idUsuario, total)
     return new Promise((resolve, reject) => {
       conexion.query(`insert into ventas
-            (id_usuario, total)
+            (id_usuario, direccion, total)
             values
-            (?, ?)`,
-        [idCliente, total], (err, resultados) => {
+            (?, ?, ?)`,
+        [idUsuario, direccion, total], (err, resultados) => {
           if (err) reject(err);
           else resolve(resultados.insertId);
         });
     });
   },
+
 }
