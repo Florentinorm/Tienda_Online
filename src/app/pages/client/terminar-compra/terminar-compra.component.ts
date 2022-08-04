@@ -4,6 +4,7 @@ import {DataSharingService} from "../../../data-sharing.service";
 import {MatTableDataSource} from '@angular/material/table';
 import {Cliente} from "../../../cliente";
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../../Login-Register/services/auth.service';
 
 export interface PeriodicElement {
   producto: string;
@@ -29,7 +30,8 @@ export class TerminarCompraComponent implements OnInit {
   search2: any;
   buscar: any;
 
-  constructor(private carritoService: CarritoService, private dataSharingService: DataSharingService) {
+  
+  constructor(private carritoService: CarritoService, private dataSharingService: DataSharingService, private authSvc: AuthService) {
   }
 
   async ngOnInit(): Promise<void> {
@@ -58,7 +60,7 @@ export class TerminarCompraComponent implements OnInit {
 
   public compraTerminada = false;
   public productos = [];
-  public columnas = ['nombre', 'descripcion', 'precio', 'quitar'];
+  public columnas = ['nombre', 'cantidad', 'precio', 'quitar'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
   public clienteModel = new Cliente("", "");
 
@@ -69,9 +71,13 @@ export class TerminarCompraComponent implements OnInit {
     if (!this.clienteModel.nombre) {
       return alert("Falta escribir el nombre del cliente");
     }
-    const respuestaCompra = await this.carritoService.terminarCompra(this.clienteModel);
-    console.log({respuestaCompra})
 
+    let id = this.authSvc.idUsuario.getValue()
+    const datos = {
+      cliente: this.clienteModel,
+      idUsuario: id
+    }
+    this.carritoService.terminarCompra(datos)
 
     this.compraTerminada=true;
     stepper.next();
@@ -85,7 +91,7 @@ export class TerminarCompraComponent implements OnInit {
 
   public total() {
     let total = 0;
-    this.productos.forEach(p => total += p.precio);
+    this.productos.forEach(p => total += (p.precio * p.cantidad));
     return total;
   }
 

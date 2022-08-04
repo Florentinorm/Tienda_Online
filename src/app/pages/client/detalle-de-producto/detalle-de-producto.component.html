@@ -7,55 +7,60 @@
 <br>
 <mat-card>
   <mat-grid-list cols="2" rowHeight="3:3">
-    <mat-grid-tile>
-      <div class="izquierda">
+    <form [formGroup]="signupForm" (ngSubmit)="agregarAlCarrito()" novalidate>
+      <mat-grid-tile>
+        <div class="izquierda">
 
-        <img *ngFor="let foto of producto.fotos; let i = index" (mouseenter)="seleccionarImagen(i)"
-          class="imagen-izquierda" [class.seleccionada]="i==indiceSeleccionado" [src]="resolverFoto(foto.foto)"
-          alt="Foto">
-      </div>
-      <div>
-        <img *ngIf="fotoSeleccionada" [src]="resolverFoto(fotoSeleccionada)" alt="">
-      </div>
-
-      <br>
-    </mat-grid-tile>
-    <mat-grid-tile class="detalles">
-      <mat-card style="margin-right: 25%;">
-
-
-        <h2 class="mat-display-2" style="text-align: center;">{{producto.nombre}}</h2>
-        <br />
-        <h3>{{producto.descripcion}}</h3>
-        <mat-divider></mat-divider>
-
-        <h3><b>Precio:</b> {{producto.precio | currency}} &nbsp;&nbsp;&nbsp;<b>Categoria:</b> Productos Gamer</h3>
-        <h3><b>Cantidad:</b>
-          <mat-form-field class="example-user-input" appearance="fill" style="width: 25%;">
-            <input matInput type="number" aria-label="1" min="1" value="0">
-          </mat-form-field>
-        </h3>
-        <!-- <br/><br/> -->
-        <!-- <mat-chip-list *ngIf="yaExiste">
-        <mat-chip color="warn" selected>
-          <mat-icon>check</mat-icon>
-          Agregado al carrito
-        </mat-chip>
-      </mat-chip-list> -->
-        <div style="text-align: center;">
-          <button *ngIf="!yaExiste" (click)="agregarAlCarrito()" class="carrito" mat-raised-button color="accent">
-            <mat-icon>add</mat-icon>
-            Agregar al carrito
-          </button>
-          <button *ngIf="yaExiste" (click)="quitarDelCarrito()" class="carrito" mat-raised-button color="accent">
-            <mat-icon>delete</mat-icon>
-            Quitar del carrito
-          </button>
-          <a routerLink="/tienda" class="comprar" mat-raised-button color="primary">
-            Seguir comprando
-          </a>
+          <img *ngFor="let foto of producto.fotos; let i = index" (mouseenter)="seleccionarImagen(i)"
+            class="imagen-izquierda" [class.seleccionada]="i==indiceSeleccionado" [src]="resolverFoto(foto.foto)"
+            alt="Foto">
         </div>
-      </mat-card>
-    </mat-grid-tile>
+        <div>
+          <img *ngIf="fotoSeleccionada" [src]="resolverFoto(fotoSeleccionada)" alt="">
+        </div>
+
+        <br>
+      </mat-grid-tile>
+      <mat-grid-tile class="detalles">
+        <mat-card style="margin-right: 25%;">
+
+
+          <h2 class="mat-display-2" style="text-align: center;">{{producto.nombre}}</h2>
+          <br />
+          <h3>{{producto.descripcion}}</h3>
+          <mat-divider></mat-divider>
+
+          <h3><b>Precio:</b> {{producto.precio | currency}} &nbsp;&nbsp;&nbsp;<b>Categoria:</b> Laptops</h3>
+          <h3><b>Cantidad:</b>
+            <mat-form-field class="example-user-input" appearance="fill" style="width: 25%;">
+              <input matInput type="number" aria-label="1" min="1" value="0" formControlName="cantidad">
+              <mat-error *ngIf="isValidField('cantidad')">
+                {{ getErrorMessage('cantidad') }}
+              </mat-error>
+            </mat-form-field>
+          </h3>
+          <!-- <br/><br/> -->
+          <!-- <mat-chip-list *ngIf="yaExiste">
+          <mat-chip color="warn" selected>
+            <mat-icon>check</mat-icon>
+            Agregado al carrito
+          </mat-chip>
+        </mat-chip-list> -->
+          <div style="text-align: center;">
+            <button *ngIf="!yaExiste" [disabled]="!signupForm.valid" type="submit" class="carrito" mat-raised-button color="accent">
+              <mat-icon>add</mat-icon>
+              Agregar al carrito
+            </button>
+            <button *ngIf="yaExiste" (click)="quitarDelCarrito()" type="button" class="carrito" mat-raised-button color="accent">
+              <mat-icon>delete</mat-icon>
+              Quitar del carrito
+            </button>
+            <a routerLink="/tienda" class="comprar" mat-raised-button color="primary">
+              Seguir comprando
+            </a>
+          </div>
+        </mat-card>
+      </mat-grid-tile>
+    </form>
   </mat-grid-list>
 </mat-card>

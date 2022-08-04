@@ -12,7 +12,7 @@ module.exports = {
   },
   obtenerPorId(id) {
     return new Promise((resolve, reject) => {
-      conexion.query(`select ventas.total, usuarios.nombre, usuarios.direccion FROM ventas inner join usuarios on ventas.id_usuario = usuarios.id_usuario WHERE ventas.id = ?`,
+      conexion.query(`select ventas.total, ventas.direccion, usuarios.nombre FROM ventas inner join usuarios on ventas.id_usuario = usuarios.id_usuario WHERE ventas.id = ?`,
         [id],
         (err, resultados) => {
           if (err) reject(err);
@@ -22,23 +22,25 @@ module.exports = {
   },
   obtener() {
     return new Promise((resolve, reject) => {
-      conexion.query(`select ventas.id, ventas.total, usuarios.nombre, usuarios.direccion FROM ventas inner join usuarios on ventas.id_usuario = usuarios.id_usuario;`,
+      conexion.query(`select ventas.id, ventas.direccion, ventas.total, usuarios.nombre FROM ventas inner join usuarios on ventas.id_usuario = usuarios.id_usuario;`,
         (err, resultados) => {
           if (err) reject(err);
           else resolve(resultados);
         });
     });
   },
-  insertar(idCliente, total) {
+  insertar( idUsuario, direccion, total) {
+    console.log('entro', direccion, idUsuario, total)
     return new Promise((resolve, reject) => {
       conexion.query(`insert into ventas
-            (id_usuario, total)
+            (id_usuario, direccion, total)
             values
-            (?, ?)`,
-        [idCliente, total], (err, resultados) => {
+            (?, ?, ?)`,
+        [idUsuario, direccion, total], (err, resultados) => {
           if (err) reject(err);
           else resolve(resultados.insertId);
         });
     });
   },
+
 }

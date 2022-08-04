@@ -9,7 +9,7 @@
                   matBadgePosition="below after"><img src="../assets/carrito.png" style="width: 25px;">&nbsp;&nbsp;&nbsp;Compras</span>
           </button>
           <mat-menu #menu="matMenu">
-            <button mat-menu-item *ngFor="let p of productos;">{{p.nombre}}  {{p.precio | currency}}</button>
+            <button mat-menu-item *ngFor="let p of productos;">{{p.nombre}}  {{(p.precio * p.cantidad) | currency}}</button>
             <button mat-menu-item>
               <strong>Total: {{total() | currency}}</strong>
             </button>

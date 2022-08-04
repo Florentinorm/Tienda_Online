@@ -41,6 +41,26 @@ module.exports = class User {
     );
   }
 
+  static saveVenta(id_usuario, direccion, total) {
+    return db.execute(`insert into ventas (id_usuario, direccion, total) values (?, ?, ?)`,
+        [id_usuario, direccion, total],
+    ); 
+  }
+
+  static findIdVenta() {
+    return db.execute('SELECT LAST_INSERT_ID() as idVenta');
+  }
+
+  static InsertProductoVendido(idVenta, idProducto) {
+    console.log('valor',idProducto, idVenta)
+    return db.execute(`insert into productos_vendidos
+            (id_venta, id_producto)
+            values
+            (?, ?)`,
+        [idVenta, idProducto],
+    )
+  }
+
     //actualiza el nuevo usuario con el token
     static update(idUser, User) {
       //retirna una sentencia sql

@@ -15,9 +15,9 @@ export class CarritoService {
     });
   }
 
-  public async agregarAlCarrito(idProducto: number) {
+  public async agregarAlCarrito(idProducto: number, cantidad: number) {
     return await this.http.post("/carrito/agregar", {
-      id: idProducto,
+      id: idProducto, cantidad: cantidad
     });
   }
 
@@ -31,7 +31,7 @@ export class CarritoService {
     return await this.http.get("/carrito");
   }
 
-  async terminarCompra(datosCliente) {
+  async terminarCompra(datosCliente: any) {
     return await this.http.post("/compra", datosCliente);
   }
 }

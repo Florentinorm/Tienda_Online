@@ -8,9 +8,9 @@
         <mat-header-cell *matHeaderCellDef>Producto</mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.nombre}}</mat-cell>
       </ng-container>
-      <ng-container matColumnDef="descripcion">
-        <mat-header-cell *matHeaderCellDef>Descripción</mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.descripcion}}</mat-cell>
+      <ng-container matColumnDef="cantidad">
+        <mat-header-cell *matHeaderCellDef>Cantidad</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.cantidad}}</mat-cell>
       </ng-container>
       <!-- Name Column -->
       <ng-container matColumnDef="categoria">
@@ -21,6 +21,10 @@
         <mat-header-cell *matHeaderCellDef>Precio</mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.precio | currency}}</mat-cell>
       </ng-container>
+<<<<<<< HEAD
+=======
+
+>>>>>>> e3121a9d599e4bc00c0d447cb0391eb09177d789
       <ng-container matColumnDef="quitar">
         <mat-header-cell *matHeaderCellDef>Quitar</mat-header-cell>
         <mat-cell *matCellDef="let element">
