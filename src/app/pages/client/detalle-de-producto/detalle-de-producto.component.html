@@ -1,9 +1,7 @@
 <br>
-<br>
-<button routerLink="/tienda" style="background-color: rgb(201, 151, 250);" mat-raised-button>
+<button routerLink="/tienda" style="background-color: rgb(201, 151, 250); margin-left: 25px;" mat-raised-button>
   <mat-icon>replay_circle_filled</mat-icon> Rregresar a la Tienda
 </button>
-<br>
 <br>
 <mat-card>
   <mat-grid-list cols="2" rowHeight="3:3">
@@ -21,7 +19,7 @@
 
         <br>
       </mat-grid-tile>
-      <mat-grid-tile class="detalles">
+      <mat-grid-tile class="detalles" style="margin-left: 36px;">
         <mat-card style="margin-right: 25%;">
 
 
@@ -39,6 +37,7 @@
               </mat-error>
             </mat-form-field>
           </h3>
+          <br>
           <!-- <br/><br/> -->
           <!-- <mat-chip-list *ngIf="yaExiste">
           <mat-chip color="warn" selected>
@@ -46,21 +45,21 @@
             Agregado al carrito
           </mat-chip>
         </mat-chip-list> -->
-          <div style="text-align: center;">
-            <button *ngIf="!yaExiste" [disabled]="!signupForm.valid" type="submit" class="carrito" mat-raised-button color="accent">
-              <mat-icon>add</mat-icon>
-              Agregar al carrito
-            </button>
-            <button *ngIf="yaExiste" (click)="quitarDelCarrito()" type="button" class="carrito" mat-raised-button color="accent">
-              <mat-icon>delete</mat-icon>
-              Quitar del carrito
-            </button>
-            <a routerLink="/tienda" class="comprar" mat-raised-button color="primary">
-              Seguir comprando
-            </a>
-          </div>
-        </mat-card>
-      </mat-grid-tile>
-    </form>
-  </mat-grid-list>
+        <div style="text-align: center;">
+          <button *ngIf="!yaExiste" [disabled]="!signupForm.valid" type="submit" class="carrito" mat-raised-button color="accent">
+            <mat-icon>add</mat-icon>
+            Agregar al carrito
+          </button>
+          <button *ngIf="yaExiste" (click)="quitarDelCarrito()" type="button" class="carrito" mat-raised-button color="accent">
+            <mat-icon>delete</mat-icon>
+            Quitar del carrito
+          </button>
+          <a routerLink="/tienda" class="comprar" mat-raised-button color="primary">
+            Seguir comprando
+          </a>
+        </div>
+      </mat-card>
+    </mat-grid-tile>
+  </form>
+</mat-grid-list>
 </mat-card>

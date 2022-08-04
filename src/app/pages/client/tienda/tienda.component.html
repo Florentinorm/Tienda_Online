@@ -1,6 +1,14 @@
-<div style="text-align: center">
-    <h1>Tienda Online de <b>The Game Starts</b></h1>
-</div>
-<br>
-<br>
-<app-tarjeta-producto [producto]="producto" *ngFor="let producto of productos"></app-tarjeta-producto>
+
+
+<mat-card>
+    <div style="text-align: center">
+        <h1>Tienda Online de <b>The Game Starts</b></h1>
+    </div>
+    <br>
+    <mat-grid-list cols="1" rowHeight="5:1">
+        <mat-grid-tile >
+            <app-tarjeta-producto [producto]="producto" *ngFor="let producto of productos"></app-tarjeta-producto>
+        </mat-grid-tile>
+      </mat-grid-list>
+</mat-card>
+      

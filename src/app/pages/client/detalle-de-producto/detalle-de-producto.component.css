@@ -27,6 +27,15 @@ mat-grid-tile.detalles ::ng-deep figure {
   padding: 5px;
 }
 
+mat-card {
+  max-width: 90%;
+  margin: 2rem auto;
+  text-align: center;
+  height: auto;
+  background-color: rgb(249, 249, 249);
+}
+
+
 button.carrito {
   position: absolute;
   left: 0;

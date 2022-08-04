@@ -1,22 +1,22 @@
-<mat-card>
+<mat-card class="card">
   <h1>Agregar nuevo producto</h1>
   <form [formGroup]="signupForm" (ngSubmit)="guardar()" novalidate>
 
     <p>
-      <mat-card appearance="fill">
+      <mat-form-field>
         <input matInput formControlName="nomPro" type="text" placeholder="Nombre">
         <mat-error *ngIf="isValidField('nomPro')">
           {{ getErrorMessage('nomPro') }}
         </mat-error>
-      </mat-card>
+      </mat-form-field>
     </p>
     <p>
-      <mat-card>
+      <mat-form-field>
         <textarea rows="10" matInput formControlName="descripcion" placeholder="Descripción"></textarea>
         <mat-error *ngIf="isValidField('descripcion')">
           {{ getErrorMessage('descripcion') }}
         </mat-error>
-      </mat-card>
+      </mat-form-field>
     </p>
     <p>
       <mat-form-field>
@@ -26,13 +26,20 @@
         </mat-error>
       </mat-form-field>
     </p>
+    <mat-card style="width: 80%;">
     <label for="fotos">Fotos</label>
     <br>
     <input accept="image/png,image/jpeg" #foto required id="fotos" multiple type="file">
-    <p style="float: right;">
-      <button texto="Guardar" mat-raised-button [disabled]="!signupForm.valid" color="primary"
-        type="submit">Agregar</button>
-      <a routerLink="/productos" mat-raised-button color="Warn" style="margin-left: 10px">Volver</a>
-    </p>
+  </mat-card>
+  <mat-grid-list cols="2" rowHeight="2:1">
+    <mat-grid-tile>
+      <button texto="Guardar" mat-raised-button [disabled]="!signupForm.valid" color="accent"
+      type="submit">Agregar</button>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <a routerLink="/productos" mat-raised-button  color="primary" style="margin-left: 10px">Volver</a>
+    </mat-grid-tile>
+  </mat-grid-list>
+
   </form>
 </mat-card>

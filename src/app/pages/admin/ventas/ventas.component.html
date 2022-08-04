@@ -1,5 +1,10 @@
-<h1>Ventas</h1>
-<button (click)="navegarAFormulario()" mat-raised-button style="background-color: rgb(201, 151, 250);" mat-raised-button><mat-icon>assignment_return</mat-icon> Regresar</button>
+<mat-card>
+  <div style="text-align: center">
+    <h1>Ventas registradas de <b>The Game Starts</b></h1>
+</div>
+<button (click)="navegarAFormulario()" mat-raised-button style="background-color: rgb(201, 151, 250); align-items: center;" mat-raised-button><mat-icon>assignment_return</mat-icon> Regresar</button>
+<br>
+<br>
 <table class="mat-elevation-z13" *ngIf="ventas.length>0" mat-table [dataSource]="ventas">
   <ng-container matColumnDef="cliente">
     <mat-header-cell *matHeaderCellDef>Cliente</mat-header-cell>
@@ -25,3 +30,4 @@
   <mat-header-row *matHeaderRowDef="columnas"></mat-header-row>
   <mat-row *matRowDef="let row; columns: columnas;"></mat-row>
 </table>
+</mat-card>

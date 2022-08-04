@@ -1,5 +1,8 @@
-<h1>Inventario de Productos <b>The Game Starts</b></h1>
 
+
+<mat-card>
+  <mat-card-content>
+  <h1>Inventario de Productos <b>The Game Starts</b></h1>
 <div style="float: right;">
 <button (click)="navegarAFormulario()"  style="background-color: rgb(201, 151, 250);" mat-raised-button><mat-icon color="primary">list_alt</mat-icon> Agregar producto</button>
 &nbsp;&nbsp;
@@ -32,3 +35,5 @@
   <mat-header-row *matHeaderRowDef="columnas"></mat-header-row>
   <mat-row *matRowDef="let row; columns: columnas;"></mat-row>
 </table>
+</mat-card-content>
+</mat-card>

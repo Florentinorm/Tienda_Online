@@ -1,7 +1,17 @@
 table {
   width: 100%;
+  
   margin-top: 10px;
 }
+
+mat-card {
+  max-width: 90%;
+  margin: 2rem auto;
+  text-align: center;
+  height: auto;
+  background-color: rgb(249, 249, 249);
+}
+
 
 
 .contenedor-padre {
