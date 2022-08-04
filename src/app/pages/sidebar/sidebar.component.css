@@ -1,0 +1,39 @@
+.contenedor-padre {
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+  }
+  
+  .barra {
+    flex: 0 1 auto;
+    background: rgb(181, 53, 246);
+    background: radial-gradient(circle, rgba(181, 53, 246, 1) 0%, rgba(96, 27, 231, 1) 100%);
+  }
+  
+  .contenido {
+    flex: 1 1 auto;
+    width: 40%;
+  }
+  
+  .nav-list {
+    background: rgb(225, 223, 255);
+    background: linear-gradient(90deg, rgb(251, 223, 253) 17%, rgb(254, 253, 253) 100%, rgb(150, 238, 255) 84%);
+  }
+  
+  .productos {
+    padding: 10px;
+    background: linear-gradient(90deg, rgb(255, 229, 252) 17%, rgb(230, 253, 255) 100%, rgba(0, 212, 255, 1) 100%);
+  }
+  
+  .example-fill-remaining-space {
+    /* This fills the remaining space, by using flexbox.
+       Every toolbar row uses a flexbox row layout. */
+    flex: 1 1 auto;
+  }
+  
+  .poli {
+    height: 60px;
+    background-color: gainsboro;
+    text-align: center;
+    /* font-size: 5vw; */
+  }

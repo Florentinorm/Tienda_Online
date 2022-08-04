@@ -1,0 +1,76 @@
+<app-navigation></app-navigation>
+<div class="login-form">
+    <mat-card>
+      <mat-card-content>
+        <h1>Registro</h1>
+          <form [formGroup]="signupForm" (ngSubmit)="signup()" novalidate>
+            <mat-form-field>
+              <mat-label>Nombre</mat-label>
+              <input matInput  formControlName="name" maxlength="40" />
+              <mat-error *ngIf="isValidField('name')">
+                {{ getErrorMessage('name') }}
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Apellido paterno</mat-label>
+              <input matInput formControlName="apellidopaterno" maxlength="40"/>
+              <mat-error *ngIf="isValidField('apellidopaterno')">
+                {{ getErrorMessage('apellidopaterno') }}
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Apellido materno</mat-label>
+              <input matInput  formControlName="apellidomaterno" maxlength="40"/>
+              <mat-error *ngIf="isValidField('apellidomaterno')">
+                {{ getErrorMessage('apellidomaterno') }}
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Email</mat-label>
+              <input matInput placeholder="Ex. Jon@gmail.com" formControlName="email" maxlength="70"/>
+              <mat-error *ngIf="isValidField('email')">
+                {{ getErrorMessage('email') }}
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Password</mat-label>
+              <input
+                matInput
+                [type]="hidePwd ? 'password' : 'text'"
+                formControlName="password"
+                maxlength="100"
+              />
+              <button type="button" mat-icon-button matSuffix (click)="hidePwd = !hidePwd">
+                <!--Si hide es true muestra un botton en caso contrario muestra otro-->
+                <mat-icon>{{hideConfirmPwd ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+              <mat-error *ngIf="isValidField('password')">
+                {{ getErrorMessage('password') }}
+              </mat-error>
+            </mat-form-field>
+            <br>
+            <br>
+            <!--SE DESACTIVA EL BOTÓN SI EL FORMULARIO ES INVÁLIDO-->
+            <button
+              color="accent"
+              [disabled]="!signupForm.valid"
+              mat-raised-button
+              type="submit"
+            >
+              <span>Sign up</span>
+            </button>
+          </form>
+          <br>
+          <br>
+          <br>
+        <nav>
+            <div style="text-align: center;">
+                <a routerLink="/login">
+                ¿Ya tienes una cuenta?
+                </a>
+            </div>
+        </nav>
+        </mat-card-content>
+      </mat-card>
+</div>
+    

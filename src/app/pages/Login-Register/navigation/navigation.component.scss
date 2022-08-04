@@ -1,0 +1,19 @@
+mat-toolbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 64px;
+  a {
+    text-decoration: none;
+    &.active-link {
+      color: white;
+    }
+    span {
+      margin-left: 24px;
+    }
+  }
+}
+
+.color {
+background: rgb(181,53,246);
+background: radial-gradient(circle, rgba(181,53,246,1) 0%, rgba(96,27,231,1) 100%); 
+}

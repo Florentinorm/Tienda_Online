@@ -1,0 +1,22 @@
+<mat-toolbar *ngIf="isLogged" [class.mat-elevation-z2]="true" color="primary">
+    <button mat-icon-button (click)="onToggleSidenav()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span class="spacer"></span>
+        <div class="contenedor-padre">
+          <button mat-raised-button [matMenuTriggerFor]="menu" style="margin-top: 10px;">
+            <span style="margin-right: 10px;" [matBadge]="productos.length+''" matBadgeOverlap="false"
+                  matBadgePosition="below after"><img src="../assets/carrito.png" style="width: 25px;">&nbsp;&nbsp;&nbsp;Compras</span>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item *ngFor="let p of productos;">{{p.nombre}}  {{p.precio | currency}}</button>
+            <button mat-menu-item>
+              <strong>Total: {{total() | currency}}</strong>
+            </button>
+            <a *ngIf="productos.length > 0" mat-menu-item routerLink="/terminar_compra">
+              <mat-icon>shopping_cart</mat-icon>
+              Terminar compra</a>
+          </mat-menu>
+        </div>
+    <button mat-button (click)="onLogout()">Cerrar sesión</button>
+ </mat-toolbar>  

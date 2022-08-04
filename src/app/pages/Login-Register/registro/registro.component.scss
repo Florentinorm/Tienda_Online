@@ -1,0 +1,31 @@
+mat-form-field {
+    width: 100%;
+  }
+  
+  button {
+    float: right;
+    width: 200px;
+  }
+  
+  .login-form {
+    padding: 4rem 1rem;
+    margin-top: 0%;
+    margin-bottom: 0%;
+  
+    mat-card {
+      max-width: 300px;
+      margin: 2rem auto;
+      text-align: center;
+      height: 420px;
+      background-color: azure;
+    }
+  
+    .full-width-input,
+    button {
+      width: 100%;
+    }
+  
+    .separator {
+      margin-bottom: 4rem;
+    }
+  }

@@ -1,0 +1,57 @@
+<app-navigation></app-navigation>
+<div class="login-form">
+    <mat-card>
+      <mat-card-content>
+        <h1>Login</h1>
+          <form [formGroup]="loginForm" (ngSubmit)="onLogin()" novalidate>
+            <mat-form-field>
+              <mat-label>Email</mat-label>
+              <input matInput formControlName="email" maxlength="50" placeholder="Ex. Jon@gmail.com"/>
+              <mat-error *ngIf="isValidField('email')">
+                {{ getErrorMessage('email') }}
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Password</mat-label>
+              <input
+                matInput
+                [type]="hidePwd ? 'password' : 'text'"
+                formControlName="password"
+                maxlength="100"
+              />
+              <button type="button" mat-icon-button matSuffix (click)="hidePwd = !hidePwd">
+                <!--Si hide es true muestra un botton en caso contrario muestra otro-->
+                <mat-icon>{{hideConfirmPwd ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+              <mat-error *ngIf="isValidField('password')">
+                {{ getErrorMessage('password') }}
+              </mat-error>
+            </mat-form-field>
+            <button
+              color="accent"
+              [disabled]="!loginForm.valid"
+              mat-raised-button
+              type="submit"
+            >
+              <span>Log in</span>
+            </button>
+          </form>
+              <br>
+              <br>
+              <br>
+          <nav>
+            <div style="text-align: center;">
+                <a routerLink="/register">
+                  ¿No tienes cuenta?
+              </a>
+              <br>
+              <br>
+              <a routerLink="/forgot-password">
+                Recuperar contraseña
+            </a>
+            </div>
+        </nav>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    
