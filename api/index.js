@@ -94,7 +94,7 @@ app.post("/compra", async (req, res) => {
 
   try {
     const carrito = req.session.carrito || [];
-    carrito.forEach(p => total += p.precio);
+    carrito.forEach(p => total += (p.precio * p.cantidad));
     const idVenta = await User.saveVenta(idUsuario, direccion, total);
     const id = await User.findIdVenta()
     // usamos for en lugar de foreach por el await

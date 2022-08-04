@@ -29,7 +29,7 @@ export class TerminarCompraComponent implements OnInit {
 
   public compraTerminada = false;
   public productos = [];
-  public columnas = ['nombre', 'descripcion', 'precio', 'quitar'];
+  public columnas = ['nombre', 'cantidad', 'precio', 'quitar'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
   public clienteModel = new Cliente("", "");
 
@@ -60,7 +60,7 @@ export class TerminarCompraComponent implements OnInit {
 
   public total() {
     let total = 0;
-    this.productos.forEach(p => total += p.precio);
+    this.productos.forEach(p => total += (p.precio * p.cantidad));
     return total;
   }
 
