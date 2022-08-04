@@ -137,6 +137,14 @@ app.post("/carrito/existe", async (req, res) => {
 app.post("/carrito/agregar", async (req, res) => {
   const idProducto = req.body.id;
   const producto = await productoModel.obtenerPorId(idProducto);
+  const productoC = {
+    id: producto.id,
+    nombre: producto.nombre,
+    descripcion: producto.descripcion,
+    precio: producto.precio,
+    cantidad: req.body.cantidad
+  };
+  console.log(productoC);
   if (!req.session.carrito) {
     req.session.carrito = [];
   }
@@ -145,7 +153,7 @@ app.post("/carrito/agregar", async (req, res) => {
     res.json(true);
     return;
   }
-  req.session.carrito.push(producto);
+  req.session.carrito.push(productoC);
   res.json(req.body);
 });
 

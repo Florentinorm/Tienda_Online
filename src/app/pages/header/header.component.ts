@@ -65,7 +65,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   public total() {
     // Quién te conoce reduce
     let total = 0;
-    this.productos.forEach(p => total += p.precio);
+    this.productos.forEach(p => total += (p.precio * p.cantidad));
     return total;
   }
 
