@@ -69,9 +69,6 @@ export class TerminarCompraComponent implements OnInit {
     if (!this.clienteModel.direccion) {
       return alert("Falta escribir la dirección del cliente");
     }
-    if (!this.clienteModel.nombre) {
-      return alert("Falta escribir el nombre del cliente");
-    }
 
     let id = this.authSvc.idUsuario.getValue()
     const datos = {

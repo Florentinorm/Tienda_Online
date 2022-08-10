@@ -38,7 +38,7 @@ const routes: Routes = [
 
 
   //{path: '', redirectTo: "/tienda", pathMatch: "full"},
-  //{path: '**', redirectTo: "/tienda"},
+  {path: '**', redirectTo: "/login"},
 ];
 
 @NgModule({

@@ -6,7 +6,7 @@ mat-card {
     max-width: 90%;
     margin: 2rem auto;
     text-align: center;
-    height: 300px;
+    height: auto;
     background-color: rgb(249, 249, 249);
   }
   

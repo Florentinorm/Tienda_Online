@@ -56,7 +56,7 @@
   <div class="wrapper">
     <mat-card>
       <mat-step label="Datos del cliente">
-        <p style="text-align: center; border-radius: 60px;">
+        <!-- <p style="text-align: center; border-radius: 60px;">
           <mat-form-field>
             <input matInput [(ngModel)]="clienteModel.nombre" type="text" (keyup.space)="noEspaciosAlPrincipio()" [(ngModel)]="search" placeholder="Nombre completo" minlength="3"
               maxlength="100">
@@ -64,7 +64,7 @@
               {{ getErrorMessage('nombre') }}
             </mat-error>
           </mat-form-field>
-        </p>
+        </p> -->
         <p style="text-align: center;">
           <mat-form-field>
             <textarea rows="10" matInput [(ngModel)]="clienteModel.direccion" (keyup.space)="noEspaciosAlPrincipio2()" [(ngModel)]="search2" placeholder="Dirección de envío"
